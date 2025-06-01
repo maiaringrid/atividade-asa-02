@@ -1,4 +1,4 @@
-🐳 *Docker Seminar – Projeto Hogwarts*  
+# 🐳 *Docker Seminar – Projeto Hogwarts*  
 > Essa atividade tem como principal objetivo **sedimentar os conceitos básicos sobre Docker** e colocá-los em prática com implementação de serviços e testes usando containers Docker.  
 
 ---
