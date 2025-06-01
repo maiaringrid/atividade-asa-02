@@ -69,4 +69,38 @@ O ambiente foi orquestrado usando **Docker Compose**, permitindo rodar todos os 
             └── lufalufa.webp
 ```
 
-... (continua no arquivo completo)
+Cada pasta e arquivo tem um propósito específico:
+
+1. *docker-compose.yml*
+Orquestra todos os serviços (DNS, proxy e web servers) em uma rede Docker interna (hogwarts_net). Define IPs estáticos, volumes e mapeamento de portas.
+
+2. *dns*
+
+ - Dockerfile: cria a imagem Ubuntu com BIND9 instalado.
+
+ - named.conf.options: configurações globais (forwarders, opções de recursão e listas de controle).
+
+ - named.conf.local: define a zona hogwarts.local como master.
+
+ - zones/db.hogwarts.local: arquivo de zona DNS contendo registros SOA, NS e A para cada subdomínio (grifinoria, sonserina, lufalufa e proxy).
+
+proxy
+
+Dockerfile: cria a imagem Nginx (Alpine) e copia o certificado SSL autoassinado + configuração nginx.conf.
+
+nginx.conf: define blocos server separados para cada subdomínio em HTTP (redireciona para HTTPS) e em HTTPS (proxy_pass para os containers das casas).
+
+certs/cert.pem, certs/key.pem: certificado e chave privada gerados (autoassinados) para hogwarts.local. Atuam no TLS do proxy.
+
+web
+Pasta contendo 3 subdiretórios, um para cada casa de Hogwarts.
+
+grifinoria/, sonserina/, lufalufa/
+
+Dockerfile: base Nginx:alpine e cópia de todos os arquivos locais para /usr/share/nginx/html.
+
+index.html: página HTML personalizada para a casa.
+
+style.css: CSS definindo fundo, sobreposição e formatação de texto.
+
+imagens/: diretório contendo arquivo .webp de fundo.
