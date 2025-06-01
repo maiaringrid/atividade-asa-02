@@ -84,7 +84,7 @@ Cada pasta e arquivo tem um propósito específico:
 
  - zones/db.hogwarts.local: arquivo de zona DNS contendo registros SOA, NS e A para cada subdomínio (grifinoria, sonserina, lufalufa e proxy).
 
-# *proxy/*
+# 3. *proxy/*
 
  - Dockerfile: cria a imagem Nginx (Alpine) e copia o certificado SSL autoassinado + configuração nginx.conf.
 
@@ -92,7 +92,7 @@ Cada pasta e arquivo tem um propósito específico:
 
  - certs/cert.pem, certs/key.pem: certificado e chave privada gerados (autoassinados) para hogwarts.local. Atuam no TLS do proxy.
 
-# *web/*
+# 4. *web/*
 Pasta contendo 3 subdiretórios, um para cada casa de Hogwarts.
 
  - grifinoria/, sonserina/, lufalufa/
