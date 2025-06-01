@@ -1,0 +1,19 @@
+options {
+    directory "/var/cache/bind";
+
+    // Permite consultas recursivas apenas da rede interna do Docker (ajuste se necessário)
+    recursion yes;
+    allow-query { any; };
+    allow-recursion { any; };
+
+    // Forwarders (se quiser encaminhar consultas que não sejam da zona hogwarts.local)
+    forwarders {
+        8.8.8.8;
+        8.8.4.4;
+    };
+
+    dnssec-validation no;
+    auth-nxdomain no;    # conform to RFC1035
+    listen-on { any; };
+    listen-on-v6 { any; };
+};

@@ -1,0 +1,21 @@
+$TTL    86400
+@       IN      SOA     ns.hogwarts.local. admin.hogwarts.local. (
+                          2025060101 ; Serial (YYYYMMDDNN)
+                          3600       ; Refresh
+                          1800       ; Retry
+                          604800     ; Expire
+                          86400 )    ; Negative Cache TTL
+
+; NS record
+        IN      NS      ns.hogwarts.local.
+
+; A record do servidor DNS (próprio) - o hostname interno será "dns"
+ns      IN      A       10.5.0.10
+
+; A records para os web servers
+grifinoria     IN   A   10.5.0.11
+sonserina      IN   A   10.5.0.12
+lufalufa       IN   A   10.5.0.13
+
+; CNAME para o proxy, se quiser chamar via proxy.hogwarts.local
+proxy   IN   A   10.5.0.20

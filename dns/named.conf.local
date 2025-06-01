@@ -1,0 +1,8 @@
+//
+// Configuração de zonas locais
+//
+
+zone "hogwarts.local" {
+    type master;
+    file "/etc/bind/zones/db.hogwarts.local";
+};
