@@ -71,10 +71,10 @@ O ambiente foi orquestrado usando **Docker Compose**, permitindo rodar todos os 
 
 Cada pasta e arquivo tem um propósito específico:
 
-1. *docker-compose.yml*
-Orquestra todos os serviços (DNS, proxy e web servers) em uma rede Docker interna (hogwarts_net). Define IPs estáticos, volumes e mapeamento de portas.
+# 1. *docker-compose.yml*
+ - Orquestra todos os serviços (DNS, proxy e web servers) em uma rede Docker interna (hogwarts_net). Define IPs estáticos, volumes e mapeamento de portas.
 
-2. *dns*
+# 2. *dns*
 
  - Dockerfile: cria a imagem Ubuntu com BIND9 instalado.
 
