@@ -1,0 +1,33 @@
+/* Fundo com imagem */
+body {
+    margin: 0;
+    padding: 0;
+    background: url("imagens/sonserina.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: #07c44f;
+}
+
+/* Camada preta semi-transparente */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* preto com transparência */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texto centralizado */
+.conteudo {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.5em;
+}
