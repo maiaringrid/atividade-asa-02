@@ -6,3 +6,4 @@ COPY imagens /usr/share/nginx/html/imagens
 
 
 
+EXPOSE 80
