@@ -1,0 +1,71 @@
+version: "3.8"
+
+networks:
+  hogwarts_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+
+services:
+  dns:
+    build:
+      context: ./dns
+    container_name: dns
+    networks:
+      hogwarts_net:
+        ipv4_address: 10.5.0.10
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    restart: unless-stopped
+
+  grifinoria:
+    build:
+      context: ./web/grifinoria
+    container_name: grifinoria
+    networks:
+      hogwarts_net:
+        ipv4_address: 10.5.0.11
+    depends_on:
+      - dns
+    restart: unless-stopped
+
+  sonserina:
+    build:
+      context: ./web/sonserina
+    container_name: sonserina
+    networks:
+      hogwarts_net:
+        ipv4_address: 10.5.0.12
+    depends_on:
+      - dns
+    restart: unless-stopped
+
+  lufalufa:
+    build:
+      context: ./web/lufalufa
+    container_name: lufalufa
+    networks:
+      hogwarts_net:
+        ipv4_address: 10.5.0.13
+    depends_on:
+      - dns
+    restart: unless-stopped
+
+  proxy:
+    build:
+      context: ./proxy
+    container_name: proxy
+    networks:
+      hogwarts_net:
+        ipv4_address: 10.5.0.20
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - dns
+      - grifinoria
+      - sonserina
+      - lufalufa
+    restart: unless-stopped
